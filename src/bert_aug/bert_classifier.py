@@ -24,7 +24,6 @@ def main(args):
         task=args.task,
         data_dir=args.data_dir,
         data_seed=args.seed)
-    #import ipdb;ipdb.set_trace()
     t_total = len(examples['train']) // args.epochs
 
     classifier = Classifier(label_list=label_list, device=device, cache_dir=args.cache,temp_rate=args.temp_rate,smooth_rate=args.smooth_rate)

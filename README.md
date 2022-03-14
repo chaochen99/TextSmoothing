@@ -1,4 +1,4 @@
-Our work based on [Data Augmentation using Pre-trained Transformer Models](https://github.com/amazon-research/transformers-data-augmentation)
+Our work mainly based on [Data Augmentation using Pre-trained Transformer Models](https://github.com/amazon-research/transformers-data-augmentation)
 
 Code contains implementation of the following data augmentation methods
 - TextSmoothing

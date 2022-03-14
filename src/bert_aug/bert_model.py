@@ -39,7 +39,6 @@ class Classifier:
         self.smooth_rate=smooth_rate
         
 
-        #import ipdb;ipdb.set_trace()
         for params in self.smooth_model.parameters():
             params.requires_grad = False
             
@@ -74,7 +73,7 @@ class Classifier:
 
             self._optimizer.zero_grad()
             outputs = self._model(**inputs)
-            loss = outputs[0]  # model
+            loss = outputs[0]  
             loss.backward()
             self._optimizer.step()
             self._scheduler.step()
@@ -83,22 +82,13 @@ class Classifier:
                       'attention_mask': batch[1],
                       'token_type_ids': batch[2],
                       }
-            #import ipdb;ipdb.set_trace()
             input_probs = self.smooth_model(
                 **input_smooth
-                # inputs['input_ids'],
-                # attention_mask=inputs['input_ids'],
-                # token_type_ids=inputs['input_ids'],
-                # #head_mask=head_mask,
-                # #inputs_embeds=inputs_embeds,
-                # #output_attentions=output_attentions,
-                # #output_hidden_states= False,
-                # #return_dict=True,
             )
 
             word_embeddings = self._model.get_input_embeddings().to(self._device)
             one_hot = torch.zeros_like(input_probs[0]).scatter_(2,inputs['input_ids'].reshape(inputs['input_ids'].shape[0],inputs['input_ids'].shape[1],1).long(),1.0).to(self._device)
-            #import ipdb;ipdb.set_trace()
+
 
             now_probs = self.smooth_rate*(torch.nn.functional.softmax(input_probs[0]/self.temp_rate, dim=-1).to(self._device))+(1-self.smooth_rate)*one_hot # 4 2 0.5 0.25
             inputs_embeds_smooth =  now_probs @ word_embeddings.weight
@@ -111,8 +101,7 @@ class Classifier:
             outputs_smooth = self._model(**input_new_smooth)[0]
         
             self._optimizer.zero_grad()
-            #outputs = self._model(**inputs)
-            loss = outputs_smooth  # model
+            loss = outputs_smooth  
             loss.backward()
             self._optimizer.step()
             self._scheduler.step()
@@ -166,7 +155,6 @@ def _make_data_loader(examples, label_list, tokenizer, batch_size, max_length, s
                                             label_list=label_list,
                                             max_length=max_length,
                                             output_mode="classification")
-    #import ipdb;ipdb.set_trace()
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_attention_mask = torch.tensor([f.attention_mask for f in features], dtype=torch.long)
     all_token_type_ids = torch.tensor([f.token_type_ids for f in features], dtype=torch.long)
