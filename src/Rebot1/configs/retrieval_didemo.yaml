@@ -1,4 +1,4 @@
-video_root: 'BLIP/video_dataset/DiDeMo/DiDeMo/videos' # local path to video data DiDeMo
+video_root: 'videos' # local path to video data DiDeMo
 
 
 vit: 'base'

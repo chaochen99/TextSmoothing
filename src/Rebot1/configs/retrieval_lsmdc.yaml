@@ -1,4 +1,4 @@
-video_root: 'BLIP/video_dataset/LSMDC' # local path to video data LSMDC
+video_root: 'LSMDC' # local path to video data LSMDC
 
 
 vit: 'base'

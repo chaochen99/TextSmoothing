@@ -19,12 +19,6 @@ class BLIP_Retrieval(nn.Module):
                  momentum = 0.995,
                  negative_all_rank = False,
                  ):
-        """
-        Args:
-            med_config (str): path for the mixture of encoder-decoder model's configuration file
-            image_size (int): input image size
-            vit (str): model size of vision transformer
-        """               
         super().__init__()
         
         self.visual_encoder, vision_width = create_vit(vit,image_size, vit_grad_ckpt, vit_ckpt_layer)

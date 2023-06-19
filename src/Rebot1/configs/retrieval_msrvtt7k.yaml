@@ -1,4 +1,4 @@
-video_root: 'ALBEF/data_video/MSRVTT_7k/videos' #local path to video data MSRVTT
+video_root: 'videos' #local path to video data MSRVTT
 
 
 vit: 'base'

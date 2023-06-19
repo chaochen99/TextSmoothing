@@ -1,5 +1,5 @@
-image_root: 'ALBEF_downstream_dataset/'
-ann_root: 'gaochaochen/VLP/RaP/meta_data/flickr30k'
+image_root: ''
+ann_root: ''
 dataset: 'flickr'
 
 # set pretrained as a file path or an url

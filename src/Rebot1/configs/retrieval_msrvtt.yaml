@@ -1,4 +1,4 @@
-video_root: 'data/msrvtt_retrieval/videos'
+video_root: 'videos'
 ann_root: 'annotation'
 
 # set pretrained as a file path or an url

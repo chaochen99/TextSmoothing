@@ -1,5 +1,5 @@
-image_root: 'ALBEF_datasets/coco'
-ann_root: 'gaochaochen/VLP/RaP/meta_data/COCO'
+image_root: 'coco'
+ann_root: ''
 dataset: 'coco'
 
 # set pretrained as a file path or an url
